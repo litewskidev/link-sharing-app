@@ -10,6 +10,11 @@
 
 # production
 /build
+/public/assets
+*.sketch
+*.fig
+*.xd
+.prettierignore
 
 # misc
 .DS_Store
