@@ -1,16 +1,14 @@
-import Links from '../Links/Links';
-import Login from '../Login/Login';
-import Preview from '../Preview/Preview';
-import Profile from '../Profile/Profile';
-import Sign from '../Sign/Sign';
+import Navbar from '../Navbar/Navbar.jsx';
+import Links from '../Links/Links.jsx';
+import Profile from '../Profile/Profile.jsx';
+import Preview from '../Preview/Preview.jsx';
 import './Main.scss';
 
 const Main = () => {
   return(
     <section id='main' >
       <div className='main__wrapper'>
-        <Login />
-        <Sign />
+        <Navbar />
         <Links />
         <Profile />
         <Preview />

@@ -1,0 +1,116 @@
+@import '../../styles/settings.scss';
+
+.login__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.188rem;
+}
+
+.login__inner {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5rem;
+  background-color: $white;
+  border-radius: .5rem;
+  width: 29.75rem;
+}
+
+.login__inner__header {
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  p {
+    color: $gray;
+  }
+}
+
+.login__inner__form {
+  width: 100%;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    p {
+      font-size: .75rem;
+      margin-bottom: .25rem;
+    }
+  }
+}
+
+.login__inner__form__input {
+  position: relative;
+
+  input {
+    width: 100%;
+    outline: none;
+    border: 1px solid $timberwolf;
+    border-radius: .5rem;
+    padding: .75rem 1rem .75rem 2.3rem;
+    font-family: $font-text;
+    font-size: 1rem;
+
+    &::placeholder {
+      opacity: .6;
+    }
+
+    &:focus {
+      border: 1px solid $majorelle-blue;
+      box-shadow: 0 0 2rem rgba(99, 60, 255, .25);
+    }
+  }
+
+  img {
+    position: absolute;
+    top: .95rem;
+    left: .75rem;
+  }
+}
+
+.login__inner__form__btn {
+  button {
+    width: 100%;
+    background-color: $majorelle-blue;
+    padding: 0.688rem 1.688rem;
+    font-family: $font-text;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $white;
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $mauve;
+    }
+  }
+}
+
+.login__inner__footer {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .2rem;
+
+  p {
+    color: $gray;
+  }
+
+  a {
+    color: $majorelle-blue;
+  }
+}
