@@ -21,7 +21,7 @@ const Login = () => {
                     type='email'
                     placeholder='e.g. alex@email.com'
                     ></input>
-                    <img src={process.env.PUBLIC_URL + '/assets/icons/icon-email.svg'}/>
+                    <img src={process.env.PUBLIC_URL + '/assets/icons/icon-email.svg'} alt='email icon' />
                   </div>
                 </div>
                 <div className='login__inner__form__password'>
@@ -31,7 +31,7 @@ const Login = () => {
                     type='password'
                     placeholder='Enter your password'
                     ></input>
-                    <img src={process.env.PUBLIC_URL + '/assets/icons/icon-password.svg'}/>
+                    <img src={process.env.PUBLIC_URL + '/assets/icons/icon-password.svg'} alt='padlock icon' />
                   </div>
                 </div>
                 <div className='login__inner__form__btn'>

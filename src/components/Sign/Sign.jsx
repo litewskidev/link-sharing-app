@@ -10,7 +10,7 @@ const Sign = () => {
           <div className='sign__inner'>
             <div className='sign__inner__header'>
               <h1>Create account</h1>
-              <p>Let’s get you started sharing your links!</p>
+              <p>Let's get you started sharing your links!</p>
             </div>
             <div className='sign__inner__form'>
               <form>
@@ -21,7 +21,7 @@ const Sign = () => {
                     type='email'
                     placeholder='e.g. alex@email.com'
                     ></input>
-                    <img src={process.env.PUBLIC_URL + '/assets/icons/icon-email.svg'}/>
+                    <img src={process.env.PUBLIC_URL + '/assets/icons/icon-email.svg'} alt='email icon' />
                   </div>
                 </div>
                 <div className='sign__inner__form__password'>
@@ -31,7 +31,7 @@ const Sign = () => {
                     type='password'
                     placeholder='At least 8 characters'
                     ></input>
-                    <img src={process.env.PUBLIC_URL + '/assets/icons/icon-password.svg'}/>
+                    <img src={process.env.PUBLIC_URL + '/assets/icons/icon-password.svg'} alt='padlock icon' />
                   </div>
                 </div>
                 <div className='sign__inner__form__password'>
@@ -41,7 +41,7 @@ const Sign = () => {
                     type='password'
                     placeholder='At least 8 characters'
                     ></input>
-                    <img src={process.env.PUBLIC_URL + '/assets/icons/icon-password.svg'}/>
+                    <img src={process.env.PUBLIC_URL + '/assets/icons/icon-password.svg'} alt='padlock icon' />
                   </div>
                 </div>
                 <p className='sign__inner__form__rule'>Password must contain at least 8 characters</p>
