@@ -37,16 +37,11 @@
   align-items: center;
   gap: .5rem;
   padding: 0.688rem 1.688rem;
-  background-color: $lavender-web;
   border-radius: .5rem;
   cursor: pointer;
 
   p {
-    color: $majorelle-blue;
-  }
-
-  img {
-    filter: invert(0) sepia(88%) saturate(5970%) hue-rotate(230deg) brightness(95%) contrast(100%);
+    color: $gray;
   }
 }
 
@@ -55,6 +50,7 @@
   align-items: center;
   gap: .5rem;
   padding: 0.688rem 1.688rem;
+  border-radius: .5rem;
   cursor: pointer;
 
   p {
@@ -70,6 +66,22 @@
       filter: invert(0) sepia(88%) saturate(5970%) hue-rotate(230deg) brightness(95%) contrast(100%);
     }
   }
+}
+
+.active {
+  background-color: $lavender-web;
+
+  p {
+    color: $majorelle-blue;
+  }
+
+  img {
+    filter: invert(0) sepia(88%) saturate(5970%) hue-rotate(230deg) brightness(95%) contrast(100%);
+  }
+}
+
+.notActiveNavLink {
+  background-color: transparent;
 }
 
 .navbar__preview {
