@@ -51,7 +51,7 @@ const Sign = () => {
               </form>
               <div className='sign__inner__footer'>
                 <p>Already have an account?</p>
-                <Link to={'/'}>Login</Link>
+                <Link to={'/login'}>Login</Link>
               </div>
             </div>
           </div>

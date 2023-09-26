@@ -12,6 +12,7 @@
   flex-direction: column;
   align-items: center;
   gap: 3.188rem;
+  width: 100%;
 }
 
 .login__inner {
@@ -113,5 +114,35 @@
 
   a {
     color: $majorelle-blue;
+  }
+}
+
+@media (max-width: 540px) {
+
+  .login__wrapper {
+    background-color: $white;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 2rem;
+  }
+
+  .login__container {
+    align-items: flex-start;
+  }
+
+  .login__inner {
+    padding: 0;
+    background-color: $white;
+    width: 100%;
+  }
+
+  .login__inner__header {
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .login__inner__footer {
+    flex-direction: column;
   }
 }
