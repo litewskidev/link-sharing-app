@@ -25,7 +25,7 @@ const Navbar = () => {
           <div className='navbar__preview' onClick={() => navigate('/preview')}>
             <p>Preview</p>
           </div>
-          <div className='navbar__preview__mobile'>
+          <div className='navbar__preview__mobile' onClick={() => navigate('/preview')}>
             <img src={process.env.PUBLIC_URL + '/assets/icons/icon-preview-header.svg'} alt='preview icon' />
           </div>
         </nav>
