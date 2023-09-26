@@ -126,6 +126,11 @@
     &::placeholder {
       opacity: .6;
     }
+
+    &:focus {
+      border: 1px solid $majorelle-blue;
+      box-shadow: 0 0 2rem rgba(99, 60, 255, .25);
+    }
   }
 }
 
@@ -172,6 +177,12 @@
   .profile__info__container {
     gap: 2.5rem;
     padding: 1.656rem;
+  }
+
+  .profile__info__header {
+    h1 {
+      font-size: 1.5rem;
+    }
   }
 
   .profile__info__inner__photo {
