@@ -26,6 +26,10 @@
   }
 }
 
+.navbar__logo {
+  display: flex;
+}
+
 .navbar__links__middle__container {
   display: flex;
   align-items: center;
@@ -85,7 +89,7 @@
 }
 
 .navbar__preview {
-  padding: 0.688rem 1.688rem;
+  padding: 0.625rem 1.688rem;
   border: 1px solid $majorelle-blue;
   border-radius: .5rem;
   cursor: pointer;
