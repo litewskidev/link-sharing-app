@@ -12,7 +12,7 @@ const generateToken = (res, userId) => {
     secure: process.env.NODE_ENV !== 'development',
     sameSite: 'strict',
     maxAge: 86400
-  })
+  });
 };
 
 export default generateToken;
