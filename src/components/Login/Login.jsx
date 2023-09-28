@@ -1,18 +1,47 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLoginMutation } from '../../redux/slices/usersApiSlice.js';
+import { setCredentials } from '../../redux/slices/authSlice.js';
 import './Login.scss';
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [inputError, setInputError] = useState(false);
+
+  // eslint-disable-next-line no-unused-vars
+  const [login, { isLoading }] = useLoginMutation();
+
+  const { userInfo } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if(userInfo) {
+      navigate('/');
+    }
+  }, [navigate, userInfo]);
 
   const submitHandler = async(e) => {
     e.preventDefault();
-    console.log('submit');
-
-    setEmail('');
-    setPassword('');
+    try {
+      const res = await login({
+        email,
+        password
+      }).unwrap();
+      dispatch(setCredentials({...res}));
+      navigate('/');
+      setInputError(false);
+      setEmail('');
+      setPassword('');
+    }
+    catch(err) {
+      setInputError(err?.data?.message || err.error);
+    }
   };
+
   return(
     <section id='login'>
       <div className='login__wrapper'>
@@ -49,6 +78,11 @@ const Login = () => {
                     <img src={process.env.PUBLIC_URL + '/assets/icons/icon-password.svg'} alt='padlock icon' />
                   </div>
                 </div>
+                {inputError &&
+                  <div className='login__input__error'>
+                    <p>{inputError}</p>
+                  </div>
+                }
                 <div className='login__inner__form__btn'>
                   <button type='submit'>Login</button>
                 </div>

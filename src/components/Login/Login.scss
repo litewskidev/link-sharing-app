@@ -117,6 +117,15 @@
   }
 }
 
+.login__input__error {
+  display: flex;
+  justify-content: center;
+
+  p {
+    color: $vermilion;
+  }
+}
+
 @media (max-width: 540px) {
 
   .login__wrapper {

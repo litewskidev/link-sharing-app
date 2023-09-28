@@ -3,12 +3,16 @@ import connectDB from './config/db.js';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import path from 'path';
+import cors from 'cors';
 import userRoutes from './routes/userRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 dotenv.config();
 connectDB();
 const app = express();
+
+//  CORS
+app.use(cors());
 
 //  PARSING
 app.use(express.json());
