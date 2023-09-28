@@ -9,9 +9,9 @@ dotenv.config();
 connectDB();
 const app = express();
 
-
 //  PARSING
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/users', userRoutes);
 
