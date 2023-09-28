@@ -1,7 +1,21 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Sign.scss';
+import './Register.scss';
 
-const Sign = () => {
+const Register = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [conPassword, setConPassword] = useState('');
+
+  const submitHandler = async(e) => {
+    e.preventDefault();
+    console.log('submit');
+
+    setEmail('');
+    setPassword('');
+    setConPassword('');
+  };
+
   return(
     <section id='sign'>
       <div className='sign__wrapper'>
@@ -13,13 +27,15 @@ const Sign = () => {
               <p>Let's get you started sharing your links!</p>
             </div>
             <div className='sign__inner__form'>
-              <form>
+              <form onSubmit={ submitHandler }>
                 <div className='sign__inner__form__email'>
                   <p>Email address</p>
                   <div className='sign__inner__form__input'>
                     <input
                     type='email'
                     placeholder='e.g. alex@email.com'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     ></input>
                     <img src={process.env.PUBLIC_URL + '/assets/icons/icon-email.svg'} alt='email icon' />
                   </div>
@@ -30,6 +46,8 @@ const Sign = () => {
                     <input
                     type='password'
                     placeholder='At least 8 characters'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     ></input>
                     <img src={process.env.PUBLIC_URL + '/assets/icons/icon-password.svg'} alt='padlock icon' />
                   </div>
@@ -40,6 +58,8 @@ const Sign = () => {
                     <input
                     type='password'
                     placeholder='At least 8 characters'
+                    value={conPassword}
+                    onChange={(e) => setConPassword(e.target.value)}
                     ></input>
                     <img src={process.env.PUBLIC_URL + '/assets/icons/icon-password.svg'} alt='padlock icon' />
                   </div>
@@ -61,4 +81,4 @@ const Sign = () => {
   );
 };
 
-export default Sign
+export default Register;

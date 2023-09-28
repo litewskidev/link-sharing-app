@@ -34,7 +34,7 @@ const Preview = () => {
       <div className='preview__wrapper'>
         <div className='preview__container'>
           <nav className='preview__navigation'>
-            <div className='preview__navigation__back' onClick={() => navigate('/links')}>
+            <div className='preview__navigation__back' onClick={() => navigate('/')}>
               <button>Back to Editor</button>
             </div>
             <div className='preview__navigation__share' onClick={() => {navigator.clipboard.writeText(location)}}>

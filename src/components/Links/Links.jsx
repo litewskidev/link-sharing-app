@@ -1,8 +1,10 @@
+import Navbar from '../Navbar/Navbar.jsx';
 import './Links.scss';
 
 const Links = () => {
   return(
     <section id='links'>
+      <Navbar />
       <div className='links__wrapper'>
         <div className='links__mockup'>
           <img src={process.env.PUBLIC_URL + '/assets/images/illustration-phone-mockup.svg'} alt='mobile phone mockup'/>

@@ -1,8 +1,10 @@
+import Navbar from '../Navbar/Navbar.jsx';
 import './Profile.scss';
 
 const Profile = () => {
   return(
     <section id='profile'>
+      <Navbar />
       <div className='profile__wrapper'>
         <div className='profile__mockup'>
           <img src={process.env.PUBLIC_URL + '/assets/images/illustration-phone-mockup.svg'} alt='mobile phone mockup'/>
