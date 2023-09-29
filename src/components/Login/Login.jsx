@@ -22,7 +22,7 @@ const Login = () => {
     if(userInfo) {
       navigate('/links');
     }
-  }, [navigate, userInfo]);
+  }, [userInfo, navigate]);
 
   const submitHandler = async(e) => {
     e.preventDefault();
@@ -31,11 +31,11 @@ const Login = () => {
         email,
         password
       }).unwrap();
-      dispatch(setCredentials({...res}));
+      dispatch(setCredentials( {...res} ));
       navigate('/links');
-      setInputError(false);
       setEmail('');
       setPassword('');
+      setInputError(false);
     }
     catch(err) {
       setInputError(err?.data?.message || err.error);
@@ -46,7 +46,9 @@ const Login = () => {
     <section id='login'>
       <div className='login__wrapper'>
         <div className='login__container'>
-          <img src={process.env.PUBLIC_URL + '/assets/logo/logo-devlinks-large.svg'} alt='logo' />
+          <Link to='/'>
+            <img src={process.env.PUBLIC_URL + '/assets/logo/logo-devlinks-large.svg'} alt='logo' />
+          </Link>
           <div className='login__inner'>
             <div className='login__inner__header'>
               <h1>Login</h1>
@@ -62,6 +64,7 @@ const Login = () => {
                     placeholder='e.g. alex@email.com'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                     ></input>
                     <img src={process.env.PUBLIC_URL + '/assets/icons/icon-email.svg'} alt='email icon' />
                   </div>
@@ -74,6 +77,7 @@ const Login = () => {
                     placeholder='Enter your password'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
                     ></input>
                     <img src={process.env.PUBLIC_URL + '/assets/icons/icon-password.svg'} alt='padlock icon' />
                   </div>

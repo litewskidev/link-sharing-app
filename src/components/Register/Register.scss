@@ -122,6 +122,15 @@
   }
 }
 
+.sign__inner__form__register__error {
+  display: flex;
+  justify-content: center;
+
+  p {
+    color: $vermilion;
+  }
+}
+
 @media (max-width: 540px) {
 
   .sign__wrapper {
