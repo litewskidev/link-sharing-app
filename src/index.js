@@ -9,11 +9,13 @@ import Profile from './components/Profile/Profile.jsx';
 import Preview from './components/Preview/Preview.jsx';
 import Login from './components/Login/Login.jsx';
 import Sign from './components/Register/Register.jsx';
+import Home from './components/Home/Home.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={ <App /> }>
-      <Route index={ true } path='/' element={ <Links /> } />
+      <Route index={ true } path='/' element={ <Home /> } />
+      <Route path='/links' element={ <Links /> } />
       <Route path='/profile' element={ <Profile /> } />
       <Route path='/preview' element={ <Preview /> } />
       <Route path='/login' element={ <Login /> } />

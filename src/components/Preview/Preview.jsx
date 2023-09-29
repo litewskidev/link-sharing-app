@@ -1,9 +1,7 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Preview.scss';
 
 const Preview = () => {
-  const navigate = useNavigate();
-
   const location = window.location.href;
 
   const testInfo = {
@@ -34,9 +32,9 @@ const Preview = () => {
       <div className='preview__wrapper'>
         <div className='preview__container'>
           <nav className='preview__navigation'>
-            <div className='preview__navigation__back' onClick={() => navigate('/')}>
+            <Link to='/links' className='preview__navigation__back'>
               <button>Back to Editor</button>
-            </div>
+            </Link>
             <div className='preview__navigation__share' onClick={() => {navigator.clipboard.writeText(location)}}>
               <button>Share Link</button>
             </div>

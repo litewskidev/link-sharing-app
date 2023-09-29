@@ -20,7 +20,7 @@ const Login = () => {
 
   useEffect(() => {
     if(userInfo) {
-      navigate('/');
+      navigate('/links');
     }
   }, [navigate, userInfo]);
 
@@ -32,7 +32,7 @@ const Login = () => {
         password
       }).unwrap();
       dispatch(setCredentials({...res}));
-      navigate('/');
+      navigate('/links');
       setInputError(false);
       setEmail('');
       setPassword('');
@@ -53,7 +53,7 @@ const Login = () => {
               <p>Add your details below to get back into the app</p>
             </div>
             <div className='login__inner__form'>
-              <form onSubmit={ submitHandler }>
+              <form onSubmit={submitHandler}>
                 <div className='login__inner__form__email'>
                   <p>Email address</p>
                   <div className='login__inner__form__input'>
@@ -89,7 +89,7 @@ const Login = () => {
               </form>
               <div className='login__inner__footer'>
                 <p>Don't have an account?</p>
-                <Link to={'/register'}>Create account</Link>
+                <Link to='/register'>Create account</Link>
               </div>
             </div>
           </div>

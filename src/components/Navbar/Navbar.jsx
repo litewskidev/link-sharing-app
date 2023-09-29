@@ -1,8 +1,27 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useLogoutMutation } from '../../redux/slices/usersApiSlice.js';
+import { clearCredentials } from '../../redux/slices/authSlice.js';
 import './Navbar.scss';
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [logout] = useLogoutMutation();
+
+  const logoutHandler = async(e) => {
+    e.preventDefault();
+    try {
+      // eslint-disable-next-line no-unused-vars
+      const res = await logout().unwrap();
+      dispatch(clearCredentials());
+      navigate('/');
+    }
+    catch(err) {
+      console.log(err);
+    }
+  };
 
   return(
     <section id='navbar'>
@@ -13,20 +32,25 @@ const Navbar = () => {
             <img className='navbar__logo__mobile' src={process.env.PUBLIC_URL + '/assets/logo/logo-devlinks-small.svg'} alt='logo' />
           </div>
           <div className='navbar__links__middle__container'>
-            <NavLink to="/" className='navbar__links'>
+            <NavLink to='/links' className='navbar__links'>
               <img src={process.env.PUBLIC_URL + '/assets/icons/icon-links-header.svg'} alt='links icon'/>
               <p className='navbar__links__mobile'>Links</p>
             </NavLink>
-            <NavLink to="/profile" className='navbar__profile'>
+            <NavLink to='/profile' className='navbar__profile'>
               <img src={process.env.PUBLIC_URL + '/assets/icons/icon-profile-details-header.svg'} alt='profile details icon' />
               <p className='navbar__profile__mobile'>Profile Details</p>
             </NavLink>
           </div>
-          <div className='navbar__preview' onClick={() => navigate('/preview')}>
-            <p>Preview</p>
-          </div>
-          <div className='navbar__preview__mobile' onClick={() => navigate('/preview')}>
-            <img src={process.env.PUBLIC_URL + '/assets/icons/icon-preview-header.svg'} alt='preview icon' />
+          <div className='navbar__corner__container'>
+            <div className='navbar__logout' onClick={logoutHandler}>
+              <img src={process.env.PUBLIC_URL + '/assets/icons/icon-logout.svg'} alt='logout icon'/>
+            </div>
+            <Link to='/preview' className='navbar__preview'>
+              <p>Preview</p>
+            </Link>
+            <Link to='/preview' className='navbar__preview__mobile'>
+              <img src={process.env.PUBLIC_URL + '/assets/icons/icon-preview-header.svg'} alt='preview icon' />
+            </Link>
           </div>
         </nav>
       </div>

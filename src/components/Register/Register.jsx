@@ -27,7 +27,7 @@ const Register = () => {
               <p>Let's get you started sharing your links!</p>
             </div>
             <div className='sign__inner__form'>
-              <form onSubmit={ submitHandler }>
+              <form onSubmit={submitHandler}>
                 <div className='sign__inner__form__email'>
                   <p>Email address</p>
                   <div className='sign__inner__form__input'>
@@ -71,7 +71,7 @@ const Register = () => {
               </form>
               <div className='sign__inner__footer'>
                 <p>Already have an account?</p>
-                <Link to={'/login'}>Login</Link>
+                <Link to='/login'>Login</Link>
               </div>
             </div>
           </div>
