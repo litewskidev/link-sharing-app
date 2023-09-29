@@ -3,7 +3,7 @@ import './styles/global.scss';
 
 const App = () => {
   return(
-    <main id='main'>
+    <main>
       <Outlet />
     </main>
   );

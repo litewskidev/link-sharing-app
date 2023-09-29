@@ -9,17 +9,23 @@ import Profile from './components/Profile/Profile.jsx';
 import Preview from './components/Preview/Preview.jsx';
 import Login from './components/Login/Login.jsx';
 import Sign from './components/Register/Register.jsx';
+import E404 from './components/E404/E404.jsx'
 import Home from './components/Home/Home.jsx';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={ <App /> }>
+    <Route exact path='/' element={ <App /> }>
       <Route index={ true } path='/' element={ <Home /> } />
-      <Route path='/links' element={ <Links /> } />
-      <Route path='/profile' element={ <Profile /> } />
-      <Route path='/preview' element={ <Preview /> } />
       <Route path='/login' element={ <Login /> } />
       <Route path='/register' element={ <Sign /> } />
+      <Route path='*' element={ <E404 /> } />
+      {/* PRIVATE ROUTES */}
+      <Route path='' element={ <PrivateRoute /> }>
+        <Route path='/links' element={ <Links /> } />
+        <Route path='/profile' element={ <Profile /> } />
+        <Route path='/preview' element={ <Preview /> } />
+      </Route>
     </Route>
   )
 );

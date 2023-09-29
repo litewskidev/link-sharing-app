@@ -1,13 +1,13 @@
 @import '../../styles/settings.scss';
 
-.sign__wrapper {
+.register__wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
-.sign__container {
+.register__container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@
   width: 100%;
 }
 
-.sign__inner {
+.register__inner {
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@
   width: 29.75rem;
 }
 
-.sign__inner__header {
+.register__inner__header {
   h1 {
     font-size: 2rem;
     font-weight: 700;
@@ -37,7 +37,7 @@
   }
 }
 
-.sign__inner__form {
+.register__inner__form {
   width: 100%;
 
   form {
@@ -52,7 +52,7 @@
   }
 }
 
-.sign__inner__form__input {
+.register__inner__form__input {
   position: relative;
 
   input {
@@ -82,12 +82,12 @@
   }
 }
 
-.sign__inner__form__rule {
+.register__inner__form__rule {
   color: $gray;
   font-size: .75rem;
 }
 
-.sign__inner__form__btn {
+.register__inner__form__btn {
   button {
     width: 100%;
     background-color: $majorelle-blue;
@@ -106,7 +106,7 @@
   }
 }
 
-.sign__inner__footer {
+.register__inner__footer {
   margin-top: 1.5rem;
   display: flex;
   align-items: center;
@@ -122,7 +122,7 @@
   }
 }
 
-.sign__inner__form__register__error {
+.register__inner__form__register__error {
   display: flex;
   justify-content: center;
 
@@ -133,30 +133,30 @@
 
 @media (max-width: 540px) {
 
-  .sign__wrapper {
+  .register__wrapper {
     background-color: $white;
     align-items: flex-start;
     justify-content: flex-start;
     padding: 2rem;
   }
 
-  .sign__container {
+  .register__container {
     align-items: flex-start;
   }
 
-  .sign__inner {
+  .register__inner {
     padding: 0;
     background-color: $white;
     width: 100%;
   }
 
-  .sign__inner__header {
+  .register__inner__header {
     h1 {
       font-size: 1.5rem;
     }
   }
 
-  .sign__inner__footer {
+  .register__inner__footer {
     flex-direction: column;
   }
 }
