@@ -3,6 +3,7 @@
 .links__wrapper {
   width: 100%;
   display: flex;
+  align-items: flex-start;
   gap: 1.5rem;
   padding: 0 1.5rem 1.5rem 1.5rem;
 }
@@ -15,6 +16,23 @@
   padding: 1.5rem;
   background-color: $white;
   border-radius: .5rem;
+}
+
+.links__mockup__image {
+  position: relative;
+}
+
+.links__mockup__links {
+  width: 77%;
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+  max-height: 51%;
+  overflow: scroll;
 }
 
 .links__info {
@@ -68,13 +86,14 @@
 }
 
 .links__info__inner__list {
-  padding: 1.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: $seasalt;
   border-radius: .5rem;
+  gap: 1.25rem;
+  background-color: $white;
 }
 
 .links__info__inner__list__empty {
