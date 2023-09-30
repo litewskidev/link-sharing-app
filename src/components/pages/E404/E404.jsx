@@ -10,4 +10,4 @@ const E404 = () => {
   );
 };
 
-export default E404
+export default E404;

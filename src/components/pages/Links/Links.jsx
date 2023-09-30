@@ -1,7 +1,11 @@
-import Navbar from '../Navbar/Navbar.jsx';
+import { useSelector } from 'react-redux';
+import Navbar from '../../elements/Navbar/Navbar.jsx';
 import './Links.scss';
 
 const Links = () => {
+  const { userInfo } = useSelector((state) => state.auth);
+  
+
   return(
     <section id='links'>
       <Navbar />
@@ -37,4 +41,4 @@ const Links = () => {
   );
 };
 
-export default Links
+export default Links;

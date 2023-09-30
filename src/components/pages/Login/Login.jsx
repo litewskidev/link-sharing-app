@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLoginMutation } from '../../redux/slices/usersApiSlice.js';
-import { setCredentials } from '../../redux/slices/authSlice.js';
+import { useLoginMutation } from '../../../redux/slices/usersApiSlice.js';
+import { setCredentials } from '../../../redux/slices/authSlice.js';
 import './Login.scss';
 
 const Login = () => {
@@ -103,4 +103,4 @@ const Login = () => {
   );
 };
 
-export default Login
+export default Login;

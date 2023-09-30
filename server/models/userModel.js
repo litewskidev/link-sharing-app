@@ -15,11 +15,17 @@ const userSchema = mongoose.Schema(
     name: {
       type: String
     },
+    surname: {
+      type: String
+    },
+    displayEmail: {
+      type: String
+    },
     image: {
       type: String
     },
     links: {
-      type: Array
+      type: Object
     }
   },
   {

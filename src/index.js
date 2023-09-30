@@ -4,14 +4,14 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import { Provider } from 'react-redux';
 import store from './redux/store.js';
 import App from './App.js';
-import Links from './components/Links/Links.jsx';
-import Profile from './components/Profile/Profile.jsx';
-import Preview from './components/Preview/Preview.jsx';
-import Login from './components/Login/Login.jsx';
-import Sign from './components/Register/Register.jsx';
-import E404 from './components/E404/E404.jsx'
-import Home from './components/Home/Home.jsx';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx';
+import Home from './components/pages/Home/Home.jsx';
+import Login from './components/pages/Login/Login.jsx';
+import Sign from './components/pages/Register/Register.jsx';
+import E404 from './components/pages/E404/E404.jsx';
+import Links from './components/pages/Links/Links.jsx';
+import Profile from './components/pages/Profile/Profile.jsx';
+import Preview from './components/pages/Preview/Preview.jsx';
+import PrivateRoute from './components/elements/PrivateRoute/PrivateRoute.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

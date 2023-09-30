@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { useLogoutMutation } from '../../redux/slices/usersApiSlice.js';
-import { clearCredentials } from '../../redux/slices/authSlice.js';
+import { useLogoutMutation } from '../../../redux/slices/usersApiSlice.js';
+import { clearCredentials } from '../../../redux/slices/authSlice.js';
 import './Navbar.scss';
 
 const Navbar = () => {
@@ -58,4 +58,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar
+export default Navbar;

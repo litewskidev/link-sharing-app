@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCredentials } from '../../redux/slices/authSlice.js';
-import { useRegisterMutation } from '../../redux/slices/usersApiSlice.js';
+import { setCredentials } from '../../../redux/slices/authSlice.js';
+import { useRegisterMutation } from '../../../redux/slices/usersApiSlice.js';
 import './Register.scss';
 
 const Register = () => {

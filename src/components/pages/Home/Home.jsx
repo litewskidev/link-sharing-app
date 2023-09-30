@@ -20,7 +20,7 @@ const Home = () => {
         <Link to={'/login'} >Login</Link>
       </div>
     </section>
-  )
+  );
 };
 
 export default Home;

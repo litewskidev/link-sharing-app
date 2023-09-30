@@ -1,4 +1,4 @@
-@import '../../styles/settings.scss';
+@import '../../../styles/settings.scss';
 
 .preview__container {
   padding: 1.5rem;
@@ -114,32 +114,7 @@
 .preview__mockup__inner__links {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-}
-
-.preview__mockup__inner__links__link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: .5rem;
-  padding: 1rem;
-  cursor: pointer;
-}
-
-.preview__mockup__inner__links__link__details {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-
-  p {
-    color: $white;
-  }
-
-  img {
-    width: 1.25rem;
-    height: 1.25rem;
-    filter: brightness(3);
-  }
+  gap: 1rem;
 }
 
 .preview__underlay {

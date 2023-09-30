@@ -13,8 +13,13 @@ const authUser = asyncHandler(async (req, res) => {
   if(user && await user.matchPassword(password)) {
     generateToken(res, user._id);
     res.status(201).json({
-      _id: user._id,
-      email: user.email
+      id: user._id,
+      email: user.email,
+      name: user.name,
+      surname: user.surname,
+      displayEmail: user.displayEmail,
+      image: user.image,
+      links: user.links
     });
   } else {
     res.status(400);
@@ -28,7 +33,7 @@ const authUser = asyncHandler(async (req, res) => {
 //  route    POST /api/users
 //  access   Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { email, password, name, image, links } = req.body;
+  const { email, password, name, surname, displayEmail, image, links } = req.body;
 
   const userExists = await User.findOne({ email });
 
@@ -41,6 +46,8 @@ const registerUser = asyncHandler(async (req, res) => {
     email,
     password,
     name,
+    surname,
+    displayEmail,
     image,
     links
   });
@@ -48,8 +55,13 @@ const registerUser = asyncHandler(async (req, res) => {
   if(user) {
     generateToken(res, user._id);
     res.status(201).json({
-      _id: user._id,
-      email: user.email
+      id: user._id,
+      email: user.email,
+      name: user.name,
+      surname: user.surname,
+      displayEmail: user.email,
+      image: user.image,
+      links: user.links
     });
   } else {
     res.status(400);
@@ -79,6 +91,8 @@ const getUserProfile = asyncHandler(async (req, res) => {
     id: req.user._id,
     email: req.user.email,
     name: req.user.name,
+    surname: req.user.surname,
+    displayEmail: req.user.displayEmail,
     image: req.user.image,
     links: req.user.links
   };
@@ -94,15 +108,19 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
   if(user) {
     user.name = req.body.name || user.name;
+    user.surname = req.body.surname || user.surname;
+    user.displayEmail = req.body.displayEmail || user.displayEmail;
     user.image = req.body.image || user.image;
     user.links = req.body.links || user.links;
 
     const updatedUser = await user.save();
 
     res.status(200).json({
-      id: updatedUser._id,
-      email: updatedUser.email,
+      id: user._id,
+      email: user.email,
       name: updatedUser.name,
+      surname: updatedUser.surname,
+      displayEmail: updatedUser.displayEmail,
       image: updatedUser.image,
       links: updatedUser.links
     });
