@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import { useUpdateMutation } from '../../../redux/slices/usersApiSlice.js';
+import { setCredentials } from '../../../redux/slices/authSlice.js';
 import Navbar from '../../elements/Navbar/Navbar.jsx';
 import UserLink from '../../elements/UserLink/UserLink.jsx';
 import './Profile.scss';
-import { useUpdateMutation } from '../../../redux/slices/usersApiSlice.js';
-import { setCredentials } from '../../../redux/slices/authSlice.js';
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const Profile = () => {
         surname,
         displayEmail
       }).unwrap();
-      dispatch(setCredentials( {...res} ))
+      dispatch(setCredentials( {...res} ));
     }
     catch(err) {
       console.log(err);
