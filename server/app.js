@@ -18,12 +18,14 @@ app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+//  ROUTE
 app.use('/api/users', userRoutes);
 
 if (process.env.NODE_ENV === 'production') {
   const __dirname = path.resolve();
-  app.use(express.static(path.join(__dirname, 'frontend/build')));
-  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html')));
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
 } else {
   app.get('/', (req, res) => { res.send('Server is ready')})
 }

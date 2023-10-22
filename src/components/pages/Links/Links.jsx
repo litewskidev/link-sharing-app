@@ -41,10 +41,10 @@ const Links = () => {
     ]);
   };
 
-  const removeLinkHandler = (link) => {
+  const removeLinkHandler = (link, index) => {
     setLinksArray(
-      linksArray.filter((index) =>
-        index.id !== link.id
+      linksArray.filter((l, i) =>
+        l.id !== link.id || i !== index
       )
     );
   };
@@ -122,7 +122,7 @@ const Links = () => {
                             <p>Link #{index + 1}</p>
                           </div>
                           <div className='inputlink__header__button'>
-                            <button onClick={() => removeLinkHandler(link)}>Remove</button>
+                            <button onClick={() => removeLinkHandler(link, index)}>Remove</button>
                           </div>
                         </div>
                         <div className='inputlink__platform'>

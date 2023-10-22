@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useUpdateMutation } from '../../../redux/slices/usersApiSlice.js';
 import { setCredentials } from '../../../redux/slices/authSlice.js';
 import Navbar from '../../elements/Navbar/Navbar.jsx';
@@ -24,8 +24,8 @@ const Profile = () => {
   let pictureButtonColor = 'rgb(99, 60, 255)';
   let linksArray = [];
 
-  if(userInfo.image !== undefined) {
-    profilePicture = image;
+  if(image !== undefined) {
+    profilePicture = process.env.PUBLIC_URL + `assets/uploads/${image}`;
     pictureButton = '+ Change Image';
     pictureButtonColor = 'rgb(255, 255, 255)';
   }
@@ -47,6 +47,14 @@ const Profile = () => {
     catch(err) {
       console.log(err);
     }
+  };
+
+  const imageHandler = async(e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('image', e.target.files[0]);
+    await update(formData);
+    setImage(userInfo.id);
   };
 
   return(
@@ -86,9 +94,13 @@ const Profile = () => {
                 <div className='profile__info__inner__photo__details'>
                   <div className='profile__info__inner__photo__image'>
                     <img src={profilePicture} alt='avatar'/>
-                    <div className='profile__info__inner__photo__image__button'>
-                      <p style={{color: pictureButtonColor}}>{pictureButton}</p>
-                    </div>
+                    <form className='profile__info__inner__photo__image__button' encType='multipart/form-data'>
+                      <input style={{color: pictureButtonColor}}
+                        type='file'
+                        name='image'
+                        onChange={imageHandler}
+                      />
+                    </form>
                   </div>
                 </div>
                 <div className='profile__info__inner__photo__info'>
