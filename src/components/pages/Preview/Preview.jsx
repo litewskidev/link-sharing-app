@@ -12,7 +12,7 @@ const Preview = () => {
   let linksArray = [];
 
   if(userInfo.image !== undefined) {
-    image = process.env.PUBLIC_URL + `assets/uploads/${userInfo.id}`;
+    image = process.env.PUBLIC_URL + `assets/uploads/${userInfo.image}`;
   }
   if(userInfo.links !== undefined) {
     linksArray = JSON.parse(userInfo.links);

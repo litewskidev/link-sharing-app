@@ -111,7 +111,10 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     user.surname = req.body.surname || user.surname;
     user.displayEmail = req.body.displayEmail || user.displayEmail;
     user.links = req.body.links || user.links;
-    user.image = user._id || user.image;
+
+    if(req.file) {
+      user.image = req.file.filename || user.image;
+    }
 
     const updatedUser = await user.save();
 

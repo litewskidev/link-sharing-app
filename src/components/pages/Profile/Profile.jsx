@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useUpdateMutation } from '../../../redux/slices/usersApiSlice.js';
 import { setCredentials } from '../../../redux/slices/authSlice.js';
 import Navbar from '../../elements/Navbar/Navbar.jsx';
@@ -11,7 +11,6 @@ const Profile = () => {
 
   const { userInfo } = useSelector((state) => state.auth);
 
-  const [image, setImage] = useState(userInfo.image);
   const [name, setName] = useState(userInfo.name);
   const [surname, setSurname] = useState(userInfo.surname);
   const [displayEmail, setDisplayEmail] = useState(userInfo.displayEmail);
@@ -24,8 +23,8 @@ const Profile = () => {
   let pictureButtonColor = 'rgb(99, 60, 255)';
   let linksArray = [];
 
-  if(image !== undefined) {
-    profilePicture = process.env.PUBLIC_URL + `assets/uploads/${image}`;
+  if(userInfo.image !== undefined) {
+    profilePicture = process.env.PUBLIC_URL + `assets/uploads/${userInfo.image}`;
     pictureButton = '+ Change Image';
     pictureButtonColor = 'rgb(255, 255, 255)';
   }
@@ -52,9 +51,19 @@ const Profile = () => {
   const imageHandler = async(e) => {
     e.preventDefault();
     const formData = new FormData();
+    formData.append('id', userInfo.id);
     formData.append('image', e.target.files[0]);
-    await update(formData);
-    setImage(userInfo.id);
+    formData.append('displayEmail', displayEmail);
+
+    try {
+      const res = await update(
+        formData
+      ).unwrap();
+    dispatch(setCredentials( {...res} ));
+    }
+    catch(err) {
+      console.log(err);
+    }
   };
 
   return(
@@ -66,7 +75,7 @@ const Profile = () => {
             <img src={process.env.PUBLIC_URL + '/assets/images/illustration-phone-mockup.svg'} alt='mobile phone mockup'/>
             <div className='profile__mockup__image__data'>
               <div className='profile__mockup__image__data__image'>
-                <img src={profilePicture} alt='avatar' />
+                <img src={profilePicture} alt='avatar'/>
               </div>
               <div className='profile__mockup__image__data__details'>
                 <h2>{name} {surname}</h2>
@@ -93,11 +102,14 @@ const Profile = () => {
                 </div >
                 <div className='profile__info__inner__photo__details'>
                   <div className='profile__info__inner__photo__image'>
-                    <img src={profilePicture} alt='avatar'/>
                     <form className='profile__info__inner__photo__image__button' encType='multipart/form-data'>
+                      <label htmlFor="image">
+                        <img src={profilePicture} alt='avatar' />
+                      </label>
                       <input style={{color: pictureButtonColor}}
-                        type='file'
+                        id='image'
                         name='image'
+                        type='file'
                         onChange={imageHandler}
                       />
                     </form>
