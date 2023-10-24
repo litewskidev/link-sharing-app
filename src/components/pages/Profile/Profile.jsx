@@ -14,6 +14,7 @@ const Profile = () => {
   const [name, setName] = useState(userInfo.name);
   const [surname, setSurname] = useState(userInfo.surname);
   const [displayEmail, setDisplayEmail] = useState(userInfo.displayEmail);
+  const [inputError, setInputError] = useState(false);
 
   // eslint-disable-next-line no-unused-vars
   const [update, { isLoading }] = useUpdateMutation();
@@ -32,8 +33,7 @@ const Profile = () => {
     linksArray = JSON.parse(userInfo.links);
   }
 
-  const saveHandler = async(e) => {
-    e.preventDefault();
+  const saveHandler = async() => {
     try {
       const res = await update({
         id: userInfo.id,
@@ -49,20 +49,19 @@ const Profile = () => {
   };
 
   const imageHandler = async(e) => {
-    e.preventDefault();
     const formData = new FormData();
     formData.append('id', userInfo.id);
     formData.append('image', e.target.files[0]);
     formData.append('displayEmail', displayEmail);
-
     try {
       const res = await update(
         formData
       ).unwrap();
     dispatch(setCredentials( {...res} ));
+    setInputError(false);
     }
     catch(err) {
-      console.log(err);
+      setInputError(err?.data?.message || err.error);
     }
   };
 
@@ -116,6 +115,12 @@ const Profile = () => {
                   </div>
                 </div>
                 <div className='profile__info__inner__photo__info'>
+                    {inputError &&
+                      <div className='profile__info__file__error'>
+                        <img src={process.env.PUBLIC_URL + '/assets/icons/icon-error.svg'} alt='error icon'/>
+                        <p>{inputError}</p>
+                      </div>
+                    }
                     <p>Image must be below 1024x1024px.<br />Use PNG or JPG format.</p>
                   </div>
               </div>

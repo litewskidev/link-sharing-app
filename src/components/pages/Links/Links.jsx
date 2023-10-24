@@ -29,8 +29,7 @@ const Links = () => {
     dropdown.classList.toggle('show');
   };
 
-  const addLinkHandler = (e) => {
-    e.preventDefault();
+  const addLinkHandler = () => {
     setLinksArray([
       ...linksArray,
       {
@@ -67,10 +66,8 @@ const Links = () => {
     setLinksArray([...linksArray]);
   };
 
-  const saveHandler = async(e) => {
-    e.preventDefault();
+  const saveHandler = async() => {
     const stringifyArray = JSON.stringify(linksArray);
-    console.log(stringifyArray);
     try {
       const res = await update({
         id: userInfo.id,
@@ -90,6 +87,15 @@ const Links = () => {
         <div className='links__mockup'>
           <div className='links__mockup__image'>
             <img src={process.env.PUBLIC_URL + '/assets/images/illustration-phone-mockup.svg'} alt='mobile phone mockup'/>
+            <div className='profile__mockup__image__data'>
+              <div className='profile__mockup__image__data__image'>
+                <img src={process.env.PUBLIC_URL + `assets/uploads/${userInfo.image}`} alt='avatar'/>
+              </div>
+              <div className='profile__mockup__image__data__details'>
+                <h2>{userInfo.name} {userInfo.surname}</h2>
+                <p>{userInfo.displayEmail}</p>
+              </div>
+            </div>
             <div className='links__mockup__links'>
               {linksArray.map((link, index) => (
                 <div style={{backgroundColor: link.background}} className='userlink__link' key={index}>

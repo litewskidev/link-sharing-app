@@ -75,7 +75,7 @@
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
-  gap: .65rem;
+  gap: .655rem;
 }
 
 .profile__info {
@@ -144,7 +144,6 @@
   width: 13rem;
   height: 13rem;
   position: relative;
-  cursor: pointer;
 }
 
 .profile__info__inner__photo__image__button {
@@ -179,6 +178,23 @@
   p {
     font-size: 0.75rem;
     color: $gray;
+  }
+}
+
+.profile__info__file__error {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .5rem;
+
+  img {
+    width: 1rem;
+    filter: invert(46%) sepia(64%) saturate(5667%) hue-rotate(338deg) brightness(95%) contrast(107%);
+  }
+
+  p {
+    font-weight: 500;
+    color: $vermilion;
   }
 }
 
@@ -240,7 +256,7 @@
     cursor: pointer;
 
     &:hover {
-      opacity: 1;
+      opacity: .5;
     }
   }
 }
