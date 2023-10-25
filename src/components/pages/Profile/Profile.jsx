@@ -130,7 +130,7 @@ const Profile = () => {
                   <input
                   type='text'
                   placeholder='e.g. John'
-                  value={name}
+                  value={name ?? ''}
                   onChange={(e) => setName(e.target.value)}
                   />
                 </div>
@@ -139,7 +139,7 @@ const Profile = () => {
                   <input
                   type='text'
                   placeholder='e.g. Appleseed'
-                  value={surname}
+                  value={surname ?? ''}
                   onChange={(e) => setSurname(e.target.value)}
                   />
                 </div>
@@ -148,7 +148,7 @@ const Profile = () => {
                   <input
                   type='email'
                   placeholder='e.g. email@example.com'
-                  value={displayEmail}
+                  value={displayEmail ?? ''}
                   onChange={(e) => setDisplayEmail(e.target.value)}
                   />
                 </div>

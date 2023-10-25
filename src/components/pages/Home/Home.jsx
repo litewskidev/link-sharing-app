@@ -32,7 +32,7 @@ const Home = () => {
             </nav>
           </div>
           <div className='home__image'>
-            <img src={process.env.PUBLIC_URL + '/assets/images/mockup_home.webp'}/>
+            <img src={process.env.PUBLIC_URL + '/assets/images/mockup_home.webp'} alt='phone mockup'/>
           </div>
         </div>
       </div>

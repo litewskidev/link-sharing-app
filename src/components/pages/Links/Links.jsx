@@ -98,13 +98,15 @@ const Links = () => {
             </div>
             <div className='links__mockup__links'>
               {linksArray.map((link, index) => (
-                <div style={{backgroundColor: link.background}} className='userlink__link' key={index}>
-                  <div className='userlink__link__details'>
-                    <img src={process.env.PUBLIC_URL + `/assets/icons/icon-${link.id.toLowerCase().replace(' ', '-').replace('.', '')}.svg`} alt='link icon' />
-                    <p>{link.id}</p>
+                <a href={link.link} target="_blank" rel='noreferrer' key={index}>
+                  <div style={{backgroundColor: link.background}} className='userlink__link'>
+                    <div className='userlink__link__details'>
+                      <img src={process.env.PUBLIC_URL + `/assets/icons/icon-${link.id.toLowerCase().replace(' ', '-').replace('.', '')}.svg`} alt='link icon' />
+                      <p>{link.id}</p>
+                    </div>
+                    <img src={process.env.PUBLIC_URL + '/assets/icons/icon-arrow-right.svg'} alt='arrow right icon'/>
                   </div>
-                  <img src={process.env.PUBLIC_URL + '/assets/icons/icon-arrow-right.svg'} alt='arrow right icon'/>
-                </div>
+                </a>
               ))}
             </div>
           </div>
@@ -160,7 +162,7 @@ const Links = () => {
                             <input
                             type='text'
                             placeholder='e.g. https://www.github.com/johnappleseed'
-                            value={link.link}
+                            value={link.link ?? ''}
                             onChange={(e) => setLinkHandler(index, link, e.target.value)}
                             />
                           </div>

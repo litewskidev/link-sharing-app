@@ -5,7 +5,6 @@
   display: flex;
   gap: 1.5rem;
   padding: 0 1.5rem 1.5rem 1.5rem;
-  overflow-x: hidden;
 }
 
 .links__mockup {
@@ -86,6 +85,7 @@
     border-radius: .5rem;
     background-color: transparent;
     cursor: pointer;
+    transition: all .2s ease-in-out;
 
     &:hover {
       background-color: $lavender-web;
@@ -94,11 +94,9 @@
 }
 
 .links__info__inner__list {
+  height: 80vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: $seasalt;
   border-radius: .5rem;
   gap: 1.25rem;
   background-color: $white;
@@ -116,7 +114,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 2.5rem;
 }
 
@@ -155,6 +152,7 @@
     color: $white;
     padding: 0.688rem 1.688rem;
     cursor: pointer;
+    transition: all .2s ease-in-out;
 
     &:hover {
       opacity: .5;
@@ -164,10 +162,6 @@
 
 //  INPUT LINK
 .inputlink__wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
   background-color: $seasalt;
   padding: 1.25rem;
   border-radius: .5rem;
@@ -176,16 +170,14 @@
 .inputlink__container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: .75rem;
-  width: 100%;
 }
 
 .inputlink__header {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
 }
 
 .inputlink__header__number {
@@ -219,7 +211,6 @@
   display: flex;
   flex-direction: column;
   gap: .25rem;
-  width: 100%;
   position: relative;
 
   p {
@@ -229,10 +220,8 @@
 
 .inputlink__platform__input {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   padding: .75rem 1rem;
-  width: 100%;
   border: 1px solid $timberwolf;
   border-radius: .5rem;
   background-color: $white;
@@ -242,8 +231,6 @@
   display: flex;
   align-items: center;
   gap: .75rem;
-  width: 100%;
-
 
   p {
     font-size: 1rem;
@@ -270,25 +257,20 @@
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10%);
-  transition: all .3s ease;
+  transition: all .3s ease-in-out;
 
   &.show {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
-    transition: all .3s ease;
   }
-}
-
-.input__link__platform__dropdown__item__container {
-  display: flex;
-  flex-direction: column;
 }
 
 .input__link__platform__dropdown__item {
   display: flex;
   align-items: center;
   gap: .75rem;
+  border-radius: .5rem;
   cursor: pointer;
 
   &:hover {
@@ -296,18 +278,7 @@
   }
 }
 
-.input__link__platform__dropdown__item__pattern {
-  height: 1px;
-  width: 100%;
-  background-color: $timberwolf;
-
-  &:last-of-type {
-    display: none;
-  }
-}
-
 .inputlink__link {
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: .25rem;
@@ -322,7 +293,6 @@
   align-items: center;
   gap: .75rem;
   padding: .75rem 1rem;
-  width: 100%;
   border: 1px solid $timberwolf;
   border-radius: .5rem;
   background-color: $white;
