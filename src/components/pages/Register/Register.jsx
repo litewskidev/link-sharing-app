@@ -14,7 +14,7 @@ const Register = () => {
   const registerRef = useRef(null);
   useLayoutEffect(() => {
     const register = registerRef.current;
-    gsap.fromTo(register, {opacity: 0, x: '-3%'}, {opacity: 1, x: 0, duration: .5, ease: 'sine.out'});
+    gsap.fromTo(register, {opacity: 0, x: '-2%'}, {opacity: 1, x: 0, duration: .5, ease: 'sine.out'});
   }, []);
 
   //  USER
@@ -60,12 +60,12 @@ const Register = () => {
 
   return(
     <section id='register'>
-      <div className='register__wrapper' ref={registerRef}>
+      <div className='register__wrapper'>
         <div className='register__container'>
           <Link to='/'>
             <img src={process.env.PUBLIC_URL + '/assets/logo/logo-devlinks-large.svg'} alt='logo' />
           </Link>
-          <div className='register__inner'>
+          <div className='register__inner' ref={registerRef}>
             <div className='register__inner__header'>
               <h1>Create account</h1>
               <p>Let's get you started sharing your links!</p>

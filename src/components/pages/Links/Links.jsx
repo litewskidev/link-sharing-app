@@ -13,7 +13,7 @@ const Links = () => {
   const linksRef = useRef(null);
   useLayoutEffect(() => {
     const links = linksRef.current;
-    gsap.fromTo(links, {opacity: 0, x: '-4%'}, {opacity: 1, x: 0, duration: .5, ease: 'sine.out'});
+    gsap.fromTo(links, {opacity: 0, x: '-2%'}, {opacity: 1, x: 0, duration: .5, ease: 'sine.out'});
   }, []);
 
   //  USER

@@ -15,7 +15,7 @@ const Preview = () => {
     const previewWrapper = previewWrapperRef.current;
     const preview = previewRef.current;
     gsap.fromTo(previewWrapper, {opacity: 0}, {opacity: 1, duration: .5, ease: 'sine.out'});
-    gsap.fromTo(preview, {x: '-5%'}, {x: 0, duration: .5, ease: 'sine.out'});
+    gsap.fromTo(preview, {x: '-2%'}, {x: 0, duration: .5, ease: 'sine.out'});
   }, []);
 
   //  USER

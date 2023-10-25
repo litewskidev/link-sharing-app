@@ -133,6 +133,9 @@
   border-bottom-right-radius: 2rem;
 }
 
+@media(max-width: 1024px) {
+}
+
 @media (max-width: 540px) {
   .preview__underlay {
     display: none;
@@ -151,7 +154,6 @@
     border-radius: 0;
     padding: 0;
     box-shadow: none;
-    padding: 3.75rem 4.313rem 0 4.313rem;
-    height: 100%;
+    padding: 3.75rem 4.313rem;
   }
 }

@@ -14,7 +14,7 @@ const Profile = () => {
   const profileRef = useRef(null);
   useLayoutEffect(() => {
     const profile = profileRef.current;
-    gsap.fromTo(profile, {opacity: 0, x: '-4%'}, {opacity: 1, x: 0, duration: .5, ease: 'sine.out'});
+    gsap.fromTo(profile, {opacity: 0, x: '-2%'}, {opacity: 1, x: 0, duration: .5, ease: 'sine.out'});
   }, []);
 
   //  USER

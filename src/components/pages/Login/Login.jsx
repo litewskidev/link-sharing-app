@@ -14,7 +14,7 @@ const Login = () => {
   const loginRef = useRef(null);
   useLayoutEffect(() => {
     const login = loginRef.current;
-    gsap.fromTo(login, {opacity: 0, x: '-3%'}, {opacity: 1, x: 0, duration: .5, ease: 'sine.out'});
+    gsap.fromTo(login, {opacity: 0, x: '-2%'}, {opacity: 1, x: 0, duration: .5, ease: 'sine.out'});
   }, []);
 
   //  USER
@@ -53,12 +53,12 @@ const Login = () => {
 
   return(
     <section id='login'>
-      <div className='login__wrapper' ref={loginRef}>
+      <div className='login__wrapper'>
         <div className='login__container'>
           <Link to='/'>
             <img src={process.env.PUBLIC_URL + '/assets/logo/logo-devlinks-large.svg'} alt='logo' />
           </Link>
-          <div className='login__inner'>
+          <div className='login__inner' ref={loginRef}>
             <div className='login__inner__header'>
               <h1>Login</h1>
               <p>Add your details below to get back into the app</p>

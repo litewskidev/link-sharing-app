@@ -1,12 +1,21 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
+import gsap from 'gsap';
 import './Home.scss';
 
 const Home = () => {
   const navigate = useNavigate();
-  const { userInfo } = useSelector((state) => state.auth);
 
+    //  GSAP
+    const homeRef = useRef(null);
+    useLayoutEffect(() => {
+      const home = homeRef.current;
+      gsap.fromTo(home, {opacity: 0, x: '-2%'}, {opacity: 1, x: 0, duration: .8, ease: 'sine.out'});
+    }, []);
+
+  //  USER
+  const { userInfo } = useSelector((state) => state.auth);
   useEffect(() => {
     if(userInfo) {
       navigate('/links');
@@ -15,7 +24,7 @@ const Home = () => {
 
   return(
     <section id='home'>
-      <div className='home__wrapper'>
+      <div className='home__wrapper' ref={homeRef}>
         <div className='home__logo'>
           <img src={process.env.PUBLIC_URL + '/assets/logo/logo-devlinks-large.svg'} alt='logo' />
           <nav className='home__nav'>
