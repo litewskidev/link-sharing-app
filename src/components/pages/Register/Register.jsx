@@ -1,30 +1,39 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCredentials } from '../../../redux/slices/authSlice.js';
 import { useRegisterMutation } from '../../../redux/slices/usersApiSlice.js';
+import { gsap } from 'gsap';
 import './Register.scss';
 
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [conPassword, setConPassword] = useState('');
-  const [registerError, setRegisterError] = useState(false);
+  //  GSAP
+  const registerRef = useRef(null);
+  useLayoutEffect(() => {
+    const register = registerRef.current;
+    gsap.fromTo(register, {opacity: 0, x: '-3%'}, {opacity: 1, x: 0, duration: .5, ease: 'sine.out'});
+  }, []);
 
-  // eslint-disable-next-line no-unused-vars
-  const [register, { isLoading }] = useRegisterMutation();
-
+  //  USER
   const { userInfo } = useSelector((state) => state.auth);
-
   useEffect(() => {
     if(userInfo) {
       navigate('/links');
     }
   }, [userInfo, navigate]);
+  // eslint-disable-next-line no-unused-vars
+  const [register, { isLoading }] = useRegisterMutation();
 
+  //  FORM
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [conPassword, setConPassword] = useState('');
+  const [registerError, setRegisterError] = useState(false);
+
+  //  HANDLER
   const submitHandler = async(e) => {
     e.preventDefault();
     if(password !== conPassword) {
@@ -51,7 +60,7 @@ const Register = () => {
 
   return(
     <section id='register'>
-      <div className='register__wrapper'>
+      <div className='register__wrapper' ref={registerRef}>
         <div className='register__container'>
           <Link to='/'>
             <img src={process.env.PUBLIC_URL + '/assets/logo/logo-devlinks-large.svg'} alt='logo' />

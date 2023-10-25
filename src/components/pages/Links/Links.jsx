@@ -1,29 +1,46 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useUpdateMutation } from '../../../redux/slices/usersApiSlice.js';
 import { setCredentials } from '../../../redux/slices/authSlice.js';
+import { gsap } from 'gsap';
 import Navbar from '../../elements/Navbar/Navbar.jsx';
 import './Links.scss';
 
 const Links = () => {
   const dispatch = useDispatch();
 
-  const { userInfo } = useSelector((state) => state.auth);
-  const [linksArray, setLinksArray] = useState([]);
+  //  GSAP
+  const linksRef = useRef(null);
+  useLayoutEffect(() => {
+    const links = linksRef.current;
+    gsap.fromTo(links, {opacity: 0, x: '-4%'}, {opacity: 1, x: 0, duration: .5, ease: 'sine.out'});
+  }, []);
 
+  //  USER
+  const { userInfo } = useSelector((state) => state.auth);
+  // eslint-disable-next-line no-unused-vars
+  const [update, { isLoading }] = useUpdateMutation();
+
+  //  PLATFORMS
   const platforms = [
     {id: 'GitHub', color: '#1A1A1A'}, {id: 'Frontend Mentor', color: '#D9D9D9'}, {id: 'Twitter', color: '#43B7E9'}, {id: 'LinkedIn', color: '#2D68FF'}, {id: 'YouTube', color: '#EE3939'}, {id: 'Facebook', color: '#2442AC'}, {id: 'Twitch', color: '#EE3FC8'}, {id: 'Dev.to', color: '#333333'}, {id: 'Codewars', color: '#8A1A50'}, {id: 'freeCodeCamp', color: '#302267'}, {id: 'GitLab', color: '#EB4925'}, {id: 'Hashnode', color: '#0330D1'}, {id: 'Stack Overflow', color: '#EC7100'}
   ];
 
-  // eslint-disable-next-line no-unused-vars
-  const [update, { isLoading }] = useUpdateMutation();
+  //  IMAGE
+  let image = process.env.PUBLIC_URL + '/assets/icons/icon-cloud.svg';
+  if(userInfo.image !== undefined) {
+    image = process.env.PUBLIC_URL + `assets/uploads/${userInfo.image}`;
+  }
 
+  //  LINKS
+  const [linksArray, setLinksArray] = useState([]);
   useEffect(() => {
     if(userInfo.links) {
       setLinksArray(JSON.parse(userInfo.links));
     }
   }, [userInfo.links]);
 
+  //  HANDLERS
   const dropdownHandler = (index) => {
     const dropdown = document.querySelector(`#platform-dropdown-${index}`);
     dropdown.classList.toggle('show');
@@ -83,13 +100,13 @@ const Links = () => {
   return(
     <section id='links'>
       <Navbar />
-      <div className='links__wrapper'>
+      <div className='links__wrapper' ref={linksRef}>
         <div className='links__mockup'>
           <div className='links__mockup__image'>
             <img src={process.env.PUBLIC_URL + '/assets/images/illustration-phone-mockup.svg'} alt='mobile phone mockup'/>
             <div className='profile__mockup__image__data'>
               <div className='profile__mockup__image__data__image'>
-                <img src={process.env.PUBLIC_URL + `assets/uploads/${userInfo.image}`} alt='avatar'/>
+                <img src={image} alt='avatar'/>
               </div>
               <div className='profile__mockup__image__data__details'>
                 <h2>{userInfo.name} {userInfo.surname}</h2>

@@ -48,6 +48,16 @@
   p {
     color: $gray;
   }
+
+  &:hover {
+    p {
+      color: $majorelle-blue;
+    }
+
+    img {
+      filter: invert(0) sepia(88%) saturate(5970%) hue-rotate(230deg) brightness(95%) contrast(100%);
+    }
+  }
 }
 
 .navbar__profile {
@@ -101,6 +111,7 @@
   padding: 0.625rem 1rem;
   display: flex;
   cursor: pointer;
+  transition: all .2s ease-in-out;
 
   img {
     width: 1.5rem;
@@ -117,6 +128,7 @@
   border: 1px solid $majorelle-blue;
   border-radius: .5rem;
   cursor: pointer;
+  transition: all .2s ease-in-out;
 
   p {
     color: $majorelle-blue;

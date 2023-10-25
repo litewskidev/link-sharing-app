@@ -155,7 +155,7 @@
     transition: all .2s ease-in-out;
 
     &:hover {
-      opacity: .5;
+      background-color: $mauve;
     }
   }
 }
@@ -272,6 +272,7 @@
   gap: .75rem;
   border-radius: .5rem;
   cursor: pointer;
+  transition: all .2s ease-in-out;
 
   &:hover {
     background-color: $lavender-web;

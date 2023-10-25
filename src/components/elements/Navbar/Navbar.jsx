@@ -8,8 +8,10 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //  LOGOUT
   const [logout] = useLogoutMutation();
 
+  //  HANDLER
   const logoutHandler = async(e) => {
     e.preventDefault();
     try {

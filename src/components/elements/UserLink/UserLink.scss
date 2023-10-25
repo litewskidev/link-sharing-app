@@ -7,6 +7,11 @@
   border-radius: .5rem;
   padding: 1rem;
   cursor: pointer;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    opacity: .8;
+  }
 }
 
 .userlink__link__details {

@@ -254,9 +254,10 @@
     color: $white;
     padding: 0.688rem 1.688rem;
     cursor: pointer;
+    transition: all .2s ease-in-out;
 
     &:hover {
-      opacity: .5;
+      background-color: $mauve;
     }
   }
 }

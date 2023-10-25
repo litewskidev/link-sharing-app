@@ -30,6 +30,7 @@
     font-weight: 600;
     color: $majorelle-blue;
     cursor: pointer;
+    transition: all .2s ease-in-out;
 
     &:hover {
       background-color: $lavender-web;
@@ -48,6 +49,7 @@
     font-weight: 600;
     color: $white;
     cursor: pointer;
+    transition: all .2s ease-in-out;
 
     &:hover {
       background-color: $mauve;

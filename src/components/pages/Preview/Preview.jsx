@@ -1,26 +1,41 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useLayoutEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import UserLink from '../../elements/UserLink/UserLink.jsx';
 import './Preview.scss';
-import UserLink from '../../elements/UserLink/UserLink';
 
 const Preview = () => {
   const location = window.location.href;
 
+  //  GSAP
+  const previewWrapperRef = useRef(null);
+  const previewRef = useRef(null);
+  useLayoutEffect(() => {
+    const previewWrapper = previewWrapperRef.current;
+    const preview = previewRef.current;
+    gsap.fromTo(previewWrapper, {opacity: 0}, {opacity: 1, duration: .5, ease: 'sine.out'});
+    gsap.fromTo(preview, {x: '-5%'}, {x: 0, duration: .5, ease: 'sine.out'});
+  }, []);
+
+  //  USER
   const { userInfo } = useSelector((state) => state.auth);
 
+  //  IMAGE
   let image = process.env.PUBLIC_URL + '/assets/icons/icon-cloud.svg';
-  let linksArray = [];
-
   if(userInfo.image !== undefined) {
     image = process.env.PUBLIC_URL + `assets/uploads/${userInfo.image}`;
   }
+
+  //  LINKS
+  let linksArray = [];
   if(userInfo.links !== undefined) {
     linksArray = JSON.parse(userInfo.links);
   }
 
   return(
     <section id='preview'>
-      <div className='preview__wrapper'>
+      <div className='preview__wrapper' ref={previewWrapperRef}>
         <div className='preview__container'>
           <nav className='preview__navigation'>
             <Link to='/links' className='preview__navigation__back'>
@@ -30,7 +45,7 @@ const Preview = () => {
               <button>Share Link</button>
             </div>
           </nav>
-          <div className='preview__mockup'>
+          <div className='preview__mockup' ref={previewRef}>
             <div className='preview__mockup__inner'>
               <div className='preview__mockup__inner__info'>
                 <div className='preview__mockup__inner__info__image'>

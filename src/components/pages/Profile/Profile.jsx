@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useState, useRef, useLayoutEffect } from 'react';
 import { useUpdateMutation } from '../../../redux/slices/usersApiSlice.js';
 import { setCredentials } from '../../../redux/slices/authSlice.js';
+import { gsap } from 'gsap';
 import Navbar from '../../elements/Navbar/Navbar.jsx';
 import UserLink from '../../elements/UserLink/UserLink.jsx';
 import './Profile.scss';
@@ -9,30 +10,41 @@ import './Profile.scss';
 const Profile = () => {
   const dispatch = useDispatch();
 
-  const { userInfo } = useSelector((state) => state.auth);
+  //  GSAP
+  const profileRef = useRef(null);
+  useLayoutEffect(() => {
+    const profile = profileRef.current;
+    gsap.fromTo(profile, {opacity: 0, x: '-4%'}, {opacity: 1, x: 0, duration: .5, ease: 'sine.out'});
+  }, []);
 
+  //  USER
+  const { userInfo } = useSelector((state) => state.auth);
+  // eslint-disable-next-line no-unused-vars
+  const [update, { isLoading }] = useUpdateMutation();
+
+  //  FORM
   const [name, setName] = useState(userInfo.name);
   const [surname, setSurname] = useState(userInfo.surname);
   const [displayEmail, setDisplayEmail] = useState(userInfo.displayEmail);
   const [inputError, setInputError] = useState(false);
 
-  // eslint-disable-next-line no-unused-vars
-  const [update, { isLoading }] = useUpdateMutation();
-
+  //  IMAGE
   let profilePicture = process.env.PUBLIC_URL + 'assets/icons/icon-cloud.svg';
   let pictureButton = '+ Upload Image';
   let pictureButtonColor = 'rgb(99, 60, 255)';
-  let linksArray = [];
-
   if(userInfo.image !== undefined) {
     profilePicture = process.env.PUBLIC_URL + `assets/uploads/${userInfo.image}`;
     pictureButton = '+ Change Image';
     pictureButtonColor = 'rgb(255, 255, 255)';
   }
+
+  //  LINKS
+  let linksArray = [];
   if(userInfo.links !== undefined) {
     linksArray = JSON.parse(userInfo.links);
   }
 
+  //  HANDLERS
   const saveHandler = async() => {
     try {
       const res = await update({
@@ -68,7 +80,7 @@ const Profile = () => {
   return(
     <section id='profile'>
       <Navbar />
-      <div className='profile__wrapper'>
+      <div className='profile__wrapper' ref={profileRef}>
         <div className='profile__mockup'>
           <div className='profile__mockup__image'>
             <img src={process.env.PUBLIC_URL + '/assets/images/illustration-phone-mockup.svg'} alt='mobile phone mockup'/>
@@ -105,7 +117,7 @@ const Profile = () => {
                       <label htmlFor="image">
                         <img src={profilePicture} alt='avatar' />
                       </label>
-                      <input style={{color: pictureButtonColor}}
+                      <input
                         id='image'
                         name='image'
                         type='file'
@@ -121,7 +133,7 @@ const Profile = () => {
                         <p>{inputError}</p>
                       </div>
                     }
-                    <p>Image must be below 1024x1024px.<br />Use PNG or JPG format.</p>
+                    <p>Click to change.<br />Image must be below 1024x1024px.<br />Use PNG or JPG format.</p>
                   </div>
               </div>
               <div className='profile__info__inner__details'>

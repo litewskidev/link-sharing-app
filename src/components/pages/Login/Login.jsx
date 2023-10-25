@@ -1,29 +1,38 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLoginMutation } from '../../../redux/slices/usersApiSlice.js';
 import { setCredentials } from '../../../redux/slices/authSlice.js';
+import { gsap } from 'gsap';
 import './Login.scss';
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [inputError, setInputError] = useState(false);
+  //  GSAP
+  const loginRef = useRef(null);
+  useLayoutEffect(() => {
+    const login = loginRef.current;
+    gsap.fromTo(login, {opacity: 0, x: '-3%'}, {opacity: 1, x: 0, duration: .5, ease: 'sine.out'});
+  }, []);
 
-  // eslint-disable-next-line no-unused-vars
-  const [login, { isLoading }] = useLoginMutation();
-
+  //  USER
   const { userInfo } = useSelector((state) => state.auth);
-
   useEffect(() => {
     if(userInfo) {
       navigate('/links');
     }
   }, [userInfo, navigate]);
+  // eslint-disable-next-line no-unused-vars
+  const [login, { isLoading }] = useLoginMutation();
 
+  //  FORM
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [inputError, setInputError] = useState(false);
+
+  //  HANDLER
   const submitHandler = async(e) => {
     e.preventDefault();
     try {
@@ -44,7 +53,7 @@ const Login = () => {
 
   return(
     <section id='login'>
-      <div className='login__wrapper'>
+      <div className='login__wrapper' ref={loginRef}>
         <div className='login__container'>
           <Link to='/'>
             <img src={process.env.PUBLIC_URL + '/assets/logo/logo-devlinks-large.svg'} alt='logo' />
