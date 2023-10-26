@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useLayoutEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import { useParams } from 'react-router-dom';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import UserLink from '../../elements/UserLink/UserLink.jsx';
-import './Preview.scss';
+import { gsap } from 'gsap';
+import axios from 'axios';
+import './ShareLink.scss';
 
-const Preview = () => {
+const ShareLink = () => {
   //  GSAP
   const previewWrapperRef = useRef(null);
   const previewRef = useRef(null);
@@ -16,36 +16,31 @@ const Preview = () => {
     gsap.fromTo(preview, {x: '-2%'}, {x: 0, duration: .5, ease: 'sine.out'});
   }, []);
 
-  //  USER
-  const { userInfo } = useSelector((state) => state.auth);
+  //  PROFILE
+  const { id } = useParams();
+  const [profile, setProfile] = useState({});
+  useEffect(() => {
+    axios.get(`http://localhost:7777/api/users/${id}`).then((res) => {
+      setProfile(res.data);
+    })
+  }, [id]);
 
   //  IMAGE
   let image = process.env.PUBLIC_URL + '/assets/icons/icon-cloud.svg';
-  if(userInfo.image !== undefined) {
-    image = process.env.PUBLIC_URL + `assets/uploads/${userInfo.image}`;
+  if(profile.image !== undefined) {
+    image = process.env.PUBLIC_URL + `assets/uploads/${profile.image}`;
   }
 
   //  LINKS
   let linksArray = [];
-  if(userInfo.links !== undefined) {
-    linksArray = JSON.parse(userInfo.links);
+  if(profile.links !== undefined) {
+    linksArray = JSON.parse(profile.links);
   }
 
-  //  CLIPBOARD
-  const clipboard = window.location.origin + '/' + userInfo.id;
-
   return(
-    <section id='preview'>
+    <section id='share-link'>
       <div className='preview__wrapper' ref={previewWrapperRef}>
         <div className='preview__container'>
-          <nav className='preview__navigation'>
-            <Link to='/links' className='preview__navigation__back'>
-              <button>Back to Editor</button>
-            </Link>
-            <div className='preview__navigation__share' onClick={() => {navigator.clipboard.writeText(clipboard)}}>
-              <button>Share Link</button>
-            </div>
-          </nav>
           <div className='preview__mockup' ref={previewRef}>
             <div className='preview__mockup__inner'>
               <div className='preview__mockup__inner__info'>
@@ -55,8 +50,8 @@ const Preview = () => {
                   </div>
                 </div>
                 <div className='preview__mockup__inner__info__details'>
-                  <h1>{userInfo.name} {userInfo.surname}</h1>
-                  <p>{userInfo.displayEmail}</p>
+                  <h1>{profile.name} {profile.surname}</h1>
+                  <p>{profile.displayEmail}</p>
                 </div>
               </div>
               <div className='preview__mockup__inner__links'>
@@ -73,4 +68,4 @@ const Preview = () => {
   );
 };
 
-export default Preview;
+export default ShareLink;

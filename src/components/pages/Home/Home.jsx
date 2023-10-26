@@ -11,7 +11,7 @@ const Home = () => {
     const homeRef = useRef(null);
     useLayoutEffect(() => {
       const home = homeRef.current;
-      gsap.fromTo(home, {opacity: 0, x: '-2%'}, {opacity: 1, x: 0, duration: .8, ease: 'sine.out'});
+      gsap.fromTo(home, {opacity: 0, x: '-2%'}, {opacity: 1, x: 0, duration: .7, ease: 'sine.out'});
     }, []);
 
   //  USER
@@ -35,7 +35,7 @@ const Home = () => {
         <div className='home__container'>
           <div className='home__info'>
             <h1>One for<br />everything</h1>
-            <p>The only link you need to share your content.</p>
+            <p>The only link you need to share your work.</p>
             <nav className='home__info__nav__btn'>
               <Link to={'/register'}>Get started</Link>
             </nav>

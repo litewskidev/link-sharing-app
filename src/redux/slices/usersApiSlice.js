@@ -34,7 +34,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         body: data,
         credentials: 'include'
       })
-    }),
+    })
   })
 });
 

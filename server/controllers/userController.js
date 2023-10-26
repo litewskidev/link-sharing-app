@@ -135,4 +135,23 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   res.status(200).json( {message: 'User profile updated.'} );
 });
 
-export { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile};
+//  desc     Get user share link
+//  route    GET /api/users/:id
+//  access   Public
+const getUserShareLink = asyncHandler(async (req, res) => {
+
+  const { id } = req.params
+  const user = await User.findById(id);
+
+  res.status(201).json({
+    id: user._id,
+    email: user.email,
+    name: user.name,
+    surname: user.surname,
+    displayEmail: user.displayEmail,
+    image: user.image,
+    links: user.links
+  });
+});
+
+export { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile, getUserShareLink };

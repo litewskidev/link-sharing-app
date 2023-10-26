@@ -133,7 +133,7 @@ const Profile = () => {
                         <p>{inputError}</p>
                       </div>
                     }
-                    <p>Click to change.<br />Image must be below 1024x1024px.<br />Use PNG or JPG format.</p>
+                    <p>Click to change.<br />Use PNG or JPG format.</p>
                   </div>
               </div>
               <div className='profile__info__inner__details'>

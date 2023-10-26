@@ -12,6 +12,7 @@ import Links from './components/pages/Links/Links.jsx';
 import Profile from './components/pages/Profile/Profile.jsx';
 import Preview from './components/pages/Preview/Preview.jsx';
 import PrivateRoute from './components/elements/PrivateRoute/PrivateRoute.jsx';
+import ShareLink from './components/pages/ShareLink/ShareLink.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,15 +27,16 @@ const router = createBrowserRouter(
         <Route path='/profile' element={ <Profile /> } />
         <Route path='/preview' element={ <Preview /> } />
       </Route>
+      <Route path='/:id' element={ <ShareLink /> } />
     </Route>
   )
 );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  //<React.StrictMode>
     <Provider store={ store }>
       <RouterProvider router={ router } />
     </Provider>
-  </React.StrictMode>
+  //</React.StrictMode>
 );
