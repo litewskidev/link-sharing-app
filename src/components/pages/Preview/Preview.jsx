@@ -32,7 +32,16 @@ const Preview = () => {
   }
 
   //  CLIPBOARD
+  const modalRef = useRef(null);
   const clipboard = window.location.origin + '/' + userInfo.id;
+  const clipboardHandle = () => {
+    navigator.clipboard.writeText(clipboard);
+    const modal = modalRef.current;
+    modal.classList.add('show');
+    setTimeout(() => {
+      modal.classList.remove('show');
+    }, 3500);
+  };
 
   return(
     <section id='preview'>
@@ -42,7 +51,7 @@ const Preview = () => {
             <Link to='/links' className='preview__navigation__back'>
               <button>Back to Editor</button>
             </Link>
-            <div className='preview__navigation__share' onClick={() => {navigator.clipboard.writeText(clipboard)}}>
+            <div className='preview__navigation__share' onClick={clipboardHandle}>
               <button>Share Link</button>
             </div>
           </nav>
@@ -64,6 +73,12 @@ const Preview = () => {
                   <UserLink link={link.link} id={link.id} color={link.background} key={link.id} />
                 ))}
               </div>
+            </div>
+          </div>
+          <div id='preview-modal' className='preview__modal' ref={modalRef}>
+            <div className='preview__modal__container'>
+              <img src={process.env.PUBLIC_URL + '/assets/icons/icon-link.svg'} alt='link icon'/>
+              <p>The link has been copied to your clipboard!</p>
             </div>
           </div>
         </div>

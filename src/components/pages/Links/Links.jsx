@@ -83,7 +83,9 @@ const Links = () => {
     setLinksArray([...linksArray]);
   };
 
+  const modalRef = useRef(null);
   const saveHandler = async() => {
+    const modal = modalRef.current;
     const stringifyArray = JSON.stringify(linksArray);
     try {
       const res = await update({
@@ -91,6 +93,10 @@ const Links = () => {
         links: stringifyArray
       }).unwrap();
       dispatch(setCredentials( {...res} ));
+      modal.classList.add('show');
+      setTimeout(() => {
+        modal.classList.remove('show');
+      }, 3500);
     }
     catch(err) {
       console.log(err);
@@ -201,6 +207,12 @@ const Links = () => {
           </div>
           <div className='links__info__footer'>
             <button onClick={saveHandler}>Save</button>
+          </div>
+        </div>
+        <div className='links__modal' ref={modalRef}>
+          <div className='links__modal__container'>
+            <img src={process.env.PUBLIC_URL + '/assets/icons/icon-changes-saved.svg'} alt='saved icon'/>
+            <p>Your changes have been successfully saved!</p>
           </div>
         </div>
       </div>

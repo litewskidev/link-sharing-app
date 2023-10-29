@@ -45,7 +45,9 @@ const Profile = () => {
   }
 
   //  HANDLERS
+  const modalSaveRef = useRef(null);
   const saveHandler = async() => {
+    const modal = modalSaveRef.current;
     try {
       const res = await update({
         id: userInfo.id,
@@ -54,13 +56,19 @@ const Profile = () => {
         displayEmail
       }).unwrap();
       dispatch(setCredentials( {...res} ));
+      modal.classList.add('show');
+      setTimeout(() => {
+        modal.classList.remove('show');
+      }, 3500);
     }
     catch(err) {
       console.log(err);
     }
   };
 
+  const modalImageRef = useRef(null);
   const imageHandler = async(e) => {
+    const modal = modalImageRef.current;
     const formData = new FormData();
     formData.append('id', userInfo.id);
     formData.append('image', e.target.files[0]);
@@ -71,6 +79,10 @@ const Profile = () => {
       ).unwrap();
     dispatch(setCredentials( {...res} ));
     setInputError(false);
+    modal.classList.add('show');
+    setTimeout(() => {
+      modal.classList.remove('show');
+    }, 3500);
     }
     catch(err) {
       setInputError(err?.data?.message || err.error);
@@ -169,6 +181,18 @@ const Profile = () => {
           </div>
           <div className='profile__info__footer'>
             <button onClick={saveHandler}>Save</button>
+          </div>
+        </div>
+        <div className='profile__modal' ref={modalSaveRef}>
+          <div className='profile__modal__container'>
+            <img src={process.env.PUBLIC_URL + '/assets/icons/icon-changes-saved.svg'} alt='saved icon'/>
+            <p>Your changes have been successfully saved!</p>
+          </div>
+        </div>
+        <div className='profile__modal' ref={modalImageRef}>
+          <div className='profile__modal__container'>
+            <img src={process.env.PUBLIC_URL + '/assets/icons/icon-upload-image.svg'} alt='img icon'/>
+            <p>Your image have been successfully changed!</p>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import UserLink from '../../elements/UserLink/UserLink.jsx';
 import { gsap } from 'gsap';
@@ -6,6 +6,7 @@ import axios from 'axios';
 import './ShareLink.scss';
 
 const ShareLink = () => {
+  const navigate = useNavigate();
   //  GSAP
   const previewWrapperRef = useRef(null);
   const previewRef = useRef(null);
@@ -22,8 +23,10 @@ const ShareLink = () => {
   useEffect(() => {
     axios.get(`http://localhost:7777/api/users/${id}`).then((res) => {
       setProfile(res.data);
-    })
-  }, [id]);
+    }).catch((err) => {
+      navigate('*');
+    });
+  }, [id, navigate]);
 
   //  IMAGE
   let image = process.env.PUBLIC_URL + '/assets/icons/icon-cloud.svg';
