@@ -9,6 +9,13 @@
   min-height: 90vh;
 }
 
+.links__loading__modal {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .links__mockup {
   width: 42.2%;
   display: flex;

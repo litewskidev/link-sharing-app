@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCredentials } from '../../../redux/slices/authSlice.js';
 import { useRegisterMutation } from '../../../redux/slices/usersApiSlice.js';
 import { gsap } from 'gsap';
+import Loading from '../../elements/Loading/Loading.jsx';
 import './Register.scss';
 
 const Register = () => {
@@ -24,7 +25,6 @@ const Register = () => {
       navigate('/links');
     }
   }, [userInfo, navigate]);
-  // eslint-disable-next-line no-unused-vars
   const [register, { isLoading }] = useRegisterMutation();
 
   //  FORM
@@ -128,6 +128,9 @@ const Register = () => {
             </div>
           </div>
         </div>
+        {isLoading &&
+          <Loading />
+        }
       </div>
     </section>
   );

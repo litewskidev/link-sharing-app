@@ -4,9 +4,11 @@ import UserLink from '../../elements/UserLink/UserLink.jsx';
 import { gsap } from 'gsap';
 import axios from 'axios';
 import './ShareLink.scss';
+import Loading from '../../elements/Loading/Loading.jsx';
 
 const ShareLink = () => {
   const navigate = useNavigate();
+
   //  GSAP
   const previewWrapperRef = useRef(null);
   const previewRef = useRef(null);
@@ -18,11 +20,14 @@ const ShareLink = () => {
   }, []);
 
   //  PROFILE
+  const [isLoading, setIsLoading] = useState(false);
   const { id } = useParams();
   const [profile, setProfile] = useState({});
   useEffect(() => {
+    setIsLoading(true);
     axios.get(`http://localhost:7777/api/users/${id}`).then((res) => {
       setProfile(res.data);
+      setIsLoading(false);
     }).catch((err) => {
       navigate('*');
     });
@@ -43,7 +48,7 @@ const ShareLink = () => {
   return(
     <section id='share-link'>
       <div className='preview__wrapper' ref={previewWrapperRef}>
-        <div className='preview__container'>
+        <div className='sharelink__container'>
           <div className='preview__mockup' ref={previewRef}>
             <div className='preview__mockup__inner'>
               <div className='preview__mockup__inner__info'>
@@ -66,6 +71,9 @@ const ShareLink = () => {
           </div>
         </div>
         <div className='preview__underlay'></div>
+        {isLoading &&
+          <Loading />
+        }
       </div>
     </section>
   );

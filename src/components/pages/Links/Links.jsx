@@ -4,6 +4,7 @@ import { useUpdateMutation } from '../../../redux/slices/usersApiSlice.js';
 import { setCredentials } from '../../../redux/slices/authSlice.js';
 import { gsap } from 'gsap';
 import Navbar from '../../elements/Navbar/Navbar.jsx';
+import Loading from '../../elements/Loading/Loading.jsx';
 import './Links.scss';
 
 const Links = () => {
@@ -18,7 +19,6 @@ const Links = () => {
 
   //  USER
   const { userInfo } = useSelector((state) => state.auth);
-  // eslint-disable-next-line no-unused-vars
   const [update, { isLoading }] = useUpdateMutation();
 
   //  PLATFORMS
@@ -215,6 +215,9 @@ const Links = () => {
             <p>Your changes have been successfully saved!</p>
           </div>
         </div>
+        {isLoading &&
+          <Loading />
+        }
       </div>
     </section>
   );

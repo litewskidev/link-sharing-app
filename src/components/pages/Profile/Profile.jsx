@@ -5,6 +5,7 @@ import { setCredentials } from '../../../redux/slices/authSlice.js';
 import { gsap } from 'gsap';
 import Navbar from '../../elements/Navbar/Navbar.jsx';
 import UserLink from '../../elements/UserLink/UserLink.jsx';
+import Loading from '../../elements/Loading/Loading.jsx';
 import './Profile.scss';
 
 const Profile = () => {
@@ -19,7 +20,6 @@ const Profile = () => {
 
   //  USER
   const { userInfo } = useSelector((state) => state.auth);
-  // eslint-disable-next-line no-unused-vars
   const [update, { isLoading }] = useUpdateMutation();
 
   //  FORM
@@ -191,6 +191,9 @@ const Profile = () => {
             <p>Your image have been successfully changed!</p>
           </div>
         </div>
+        {isLoading &&
+          <Loading />
+        }
       </div>
     </section>
   );

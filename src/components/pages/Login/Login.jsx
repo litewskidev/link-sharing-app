@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLoginMutation } from '../../../redux/slices/usersApiSlice.js';
 import { setCredentials } from '../../../redux/slices/authSlice.js';
 import { gsap } from 'gsap';
+import Loading from '../../elements/Loading/Loading.jsx';
 import './Login.scss';
 
 const Login = () => {
@@ -24,7 +25,6 @@ const Login = () => {
       navigate('/links');
     }
   }, [userInfo, navigate]);
-  // eslint-disable-next-line no-unused-vars
   const [login, { isLoading }] = useLoginMutation();
 
   //  FORM
@@ -96,6 +96,13 @@ const Login = () => {
                     <p>{inputError}</p>
                   </div>
                 }
+                <div className='login__test'>
+                  <div className='login__test__account'>
+                    <p>Test Account</p>
+                    <p>Email: test@test.com</p>
+                    <p>Password: test123</p>
+                  </div>
+                </div>
                 <div className='login__inner__form__btn'>
                   <button type='submit'>Login</button>
                 </div>
@@ -107,6 +114,9 @@ const Login = () => {
             </div>
           </div>
         </div>
+        {isLoading &&
+          <Loading />
+        }
       </div>
     </section>
   );

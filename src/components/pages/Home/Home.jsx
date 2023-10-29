@@ -39,6 +39,13 @@ const Home = () => {
             <nav className='home__info__nav__btn'>
               <Link to={'/register'}>Get started</Link>
             </nav>
+            <div className='home__test__links'>
+              <p>Test Links</p>
+              <a target="_blank" rel='noreferrer' href='https://devlinks.litewskidev.usermd.net/65398d5e91b4ad6c913a9f48'>Avis Jenssen</a>
+              <a target="_blank" rel='noreferrer' href='https://devlinks.litewskidev.usermd.net/6538244bfbca5b9f8e2c65fd'>Myra Ennis</a>
+              <a target="_blank" rel='noreferrer' href='https://devlinks.litewskidev.usermd.net/65398b3991b4ad6c913a9f3c'>David McCue</a>
+
+            </div>
           </div>
           <div className='home__image'>
             <img src={process.env.PUBLIC_URL + '/assets/images/mockup_home.webp'} alt='phone mockup'/>

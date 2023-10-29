@@ -114,6 +114,16 @@
   }
 }
 
+.home__test__links {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+
+  a {
+    color: $mauve;
+  }
+}
+
 @media (max-width: 540px) {
   .home__wrapper {
     gap: 4rem;

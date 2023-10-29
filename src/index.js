@@ -8,10 +8,10 @@ import Home from './components/pages/Home/Home.jsx';
 import Login from './components/pages/Login/Login.jsx';
 import Sign from './components/pages/Register/Register.jsx';
 import E404 from './components/pages/E404/E404.jsx';
+import PrivateRoute from './components/elements/PrivateRoute/PrivateRoute.jsx';
 import Links from './components/pages/Links/Links.jsx';
 import Profile from './components/pages/Profile/Profile.jsx';
 import Preview from './components/pages/Preview/Preview.jsx';
-import PrivateRoute from './components/elements/PrivateRoute/PrivateRoute.jsx';
 import ShareLink from './components/pages/ShareLink/ShareLink.jsx';
 
 const router = createBrowserRouter(
