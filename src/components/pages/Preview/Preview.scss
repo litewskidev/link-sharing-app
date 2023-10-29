@@ -34,7 +34,9 @@
     cursor: pointer;
     transition: all .2s ease-in-out;
 
-    &:hover {
+    &:hover,
+    &:focus,
+    &.active {
       background-color: $lavender-web;
     }
   }
@@ -53,7 +55,9 @@
     cursor: pointer;
     transition: all .2s ease-in-out;
 
-    &:hover {
+    &:hover,
+    &:focus,
+    &.active {
       background-color: $mauve;
       border: 1px solid $mauve;
     }

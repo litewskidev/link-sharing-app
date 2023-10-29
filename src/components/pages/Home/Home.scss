@@ -23,7 +23,9 @@
     color: $majorelle-blue;
     cursor: pointer;
 
-    &:hover {
+    &:hover,
+    &:focus,
+    &.active {
       background-color: $mauve;
       border: 1px solid $mauve;
       color: $white;
@@ -40,7 +42,9 @@
     color: $white;
     cursor: pointer;
 
-    &:hover {
+    &:hover,
+    &:focus,
+    &.active {
       background-color: $mauve;
       border: 1px solid $mauve;
     }
@@ -96,7 +100,9 @@
     color: $white;
     cursor: pointer;
 
-    &:hover {
+    &:hover,
+    &:focus,
+    &.active {
       background-color: $mauve;
       border: 1px solid $mauve;
     }
