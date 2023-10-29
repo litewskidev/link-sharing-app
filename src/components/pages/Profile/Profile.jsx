@@ -30,12 +30,8 @@ const Profile = () => {
 
   //  IMAGE
   let profilePicture = process.env.PUBLIC_URL + 'assets/icons/icon-cloud.svg';
-  let pictureButton = '+ Upload Image';
-  let pictureButtonColor = 'rgb(99, 60, 255)';
   if(userInfo.image !== undefined) {
     profilePicture = process.env.PUBLIC_URL + `assets/uploads/${userInfo.image}`;
-    pictureButton = '+ Change Image';
-    pictureButtonColor = 'rgb(255, 255, 255)';
   }
 
   //  LINKS

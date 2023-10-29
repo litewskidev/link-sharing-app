@@ -136,16 +136,20 @@
 }
 
 .preview__modal {
-  position: absolute;
-  bottom: 2rem;
   width: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(200%);
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(200%);
   transition: all .5s ease-in-out;
 
   &.show {
+    opacity: 1;
+    visibility: visible;
     transform: translateX(-50%) translateY(0);
   }
 }
