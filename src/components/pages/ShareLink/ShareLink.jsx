@@ -63,8 +63,8 @@ const ShareLink = () => {
                 </div>
               </div>
               <div className='preview__mockup__inner__links'>
-                {linksArray.map(link => (
-                  <UserLink link={link.link} id={link.id} color={link.background} key={link.id} />
+                {linksArray.map((link, index) => (
+                  <UserLink link={link.link} id={link.id} color={link.background} key={index} />
                 ))}
               </div>
             </div>

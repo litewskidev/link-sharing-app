@@ -102,8 +102,8 @@ const Profile = () => {
               </div>
             </div>
             <div className='profile__mockup__image__links'>
-              {linksArray.splice(0, 5).map(link => (
-                <UserLink link={link.link} id={link.id} color={link.background} key={link.id} />
+              {linksArray.splice(0, 5).map((link, index) => (
+                <UserLink link={link.link} id={link.id} color={link.background} key={index} />
               ))}
             </div>
           </div>

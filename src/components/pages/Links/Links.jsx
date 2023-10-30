@@ -41,6 +41,16 @@ const Links = () => {
   }, [userInfo.links]);
 
   //  HANDLERS
+  const dragLink = useRef(0);
+  const draggedOverLink = useRef(0);
+  const sortLinksHandler = () => {
+    const linksArrayCopy = [...linksArray];
+    const temp = linksArrayCopy[dragLink.current];
+    linksArrayCopy[dragLink.current] = linksArrayCopy[draggedOverLink.current];
+    linksArrayCopy[draggedOverLink.current] = temp;
+    setLinksArray(linksArrayCopy);
+  }
+
   const dropdownHandler = (index) => {
     const dropdown = document.querySelector(`#platform-dropdown-${index}`);
     dropdown.classList.toggle('show');
@@ -145,7 +155,13 @@ const Links = () => {
               <div className='links__info__inner__list'>
                 {(linksArray.length > 0) ? (
                   linksArray.map((link, index) => (
-                    <div className='inputlink__wrapper' key={index}>
+                    <div className='inputlink__wrapper' key={index}
+                    draggable
+                    onDragStart={() => (dragLink.current = index)}
+                    onDragEnter={() => (draggedOverLink.current = index)}
+                    onDragEnd={sortLinksHandler}
+                    onDragOver={(e) => e.preventDefault()}
+                    >
                       <div className='inputlink__container'>
                         <div className='inputlink__header'>
                           <div className='inputlink__header__number'>
@@ -169,7 +185,7 @@ const Links = () => {
                           </div>
                           <div id={`platform-dropdown-${index}`} className='input__link__platform__dropdown'>
                             {platforms.map(platform => (
-                              <div className='input__link__platform__dropdown__item__container' key={platform.color} >
+                              <div className='input__link__platform__dropdown__item__container' key={platform.id} >
                                 <div className='input__link__platform__dropdown__item' onClick={() => setPlatformHandler(index, platform)}>
                                   <img src={process.env.PUBLIC_URL + `/assets/icons/icon-${platform.id.toLowerCase().replace(' ', '-').replace('.', '')}.svg`} alt={`${platform.id.toLowerCase()} icon`} />
                                   <p>{platform.id}</p>
@@ -198,7 +214,7 @@ const Links = () => {
                     <img src={process.env.PUBLIC_URL + '/assets/images/illustration-empty.svg'} alt='mobile phone pic' />
                     <div className='links__info__inner__list__empty__info'>
                       <h2>Let's get you started</h2>
-                      <p>Use the "Add new link" button to get started. Once you have more than one link, you can reorder and edit them. We're here to help you share your profiles with everyone!</p>
+                      <p>Use the "Add new link" button to get started. Once you have more than one link, you can reorder and edit them. I'm here to help you share your profiles with everyone!</p>
                     </div>
                   </div>
                 )}
