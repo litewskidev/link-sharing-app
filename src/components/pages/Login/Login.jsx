@@ -100,7 +100,7 @@ const Login = () => {
                   <div className='login__test__account'>
                     <p>Test Account</p>
                     <p>Email: test@test.com</p>
-                    <p>Password: test123</p>
+                    <p>Password: test1234</p>
                   </div>
                 </div>
                 <div className='login__inner__form__btn'>

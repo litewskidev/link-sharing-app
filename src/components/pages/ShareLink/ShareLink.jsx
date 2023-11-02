@@ -1,10 +1,10 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import UserLink from '../../elements/UserLink/UserLink.jsx';
 import { gsap } from 'gsap';
 import axios from 'axios';
-import './ShareLink.scss';
+import UserLink from '../../elements/UserLink/UserLink.jsx';
 import Loading from '../../elements/Loading/Loading.jsx';
+import './ShareLink.scss';
 
 const ShareLink = () => {
   const navigate = useNavigate();
