@@ -259,9 +259,7 @@
     cursor: pointer;
     transition: all .2s ease-in-out;
 
-    &:hover,
-    &:focus,
-    &.active {
+    &:hover {
       background-color: $mauve;
     }
   }
@@ -304,20 +302,22 @@
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 1024px) {
   .profile__mockup {
     display: none;
   }
 
+  .profile__info {
+    width: 100%;
+  }
+}
+
+@media (max-width: 540px) {
   .profile__wrapper {
     width: 100%;
     display: flex;
     gap: 1.5rem;
     padding: 1rem;
-  }
-
-  .profile__info {
-    width: 100%;
   }
 
   .profile__info__container {

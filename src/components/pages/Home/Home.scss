@@ -5,6 +5,7 @@
   flex-direction: column;
   gap: 1rem;
   padding: 1.5rem 10%;
+  overflow: hidden;
 }
 
 .home__logo {
@@ -23,9 +24,7 @@
     color: $majorelle-blue;
     cursor: pointer;
 
-    &:hover,
-    &:focus,
-    &.active {
+    &:hover {
       background-color: $mauve;
       border: 1px solid $mauve;
       color: $white;
@@ -42,9 +41,7 @@
     color: $white;
     cursor: pointer;
 
-    &:hover,
-    &:focus,
-    &.active {
+    &:hover {
       background-color: $mauve;
       border: 1px solid $mauve;
     }
@@ -100,9 +97,7 @@
     color: $white;
     cursor: pointer;
 
-    &:hover,
-    &:focus,
-    &.active {
+    &:hover {
       background-color: $mauve;
       border: 1px solid $mauve;
     }
@@ -127,6 +122,27 @@
 
   a {
     color: $mauve;
+  }
+}
+
+@media (max-width: 1024px) {
+  .home__info {
+    gap: 1.5rem;
+
+    h1 {
+      font-size: 4.5rem;
+      line-height: 4.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+  }
+
+  .home__image {
+    img {
+      width: 40rem;
+    }
   }
 }
 

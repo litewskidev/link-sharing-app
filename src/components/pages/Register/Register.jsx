@@ -93,6 +93,7 @@ const Register = () => {
                     placeholder='At least 8 characters'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    pattern='[A-Za-z0-9]{8,99}'
                     required
                     ></input>
                     <img src={process.env.PUBLIC_URL + '/assets/icons/icon-password.svg'} alt='padlock icon' />

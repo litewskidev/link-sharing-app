@@ -9,9 +9,7 @@
   cursor: pointer;
   transition: all .2s ease-in-out;
 
-  &:hover,
-  &:focus,
-  &.active {
+  &:hover {
     opacity: .8;
   }
 }

@@ -88,9 +88,7 @@
     cursor: pointer;
     transition: all .2s ease-in-out;
 
-    &:hover,
-    &:focus,
-    &.active {
+    &:hover {
       background-color: $lavender-web;
     }
   }
@@ -151,9 +149,7 @@
     cursor: pointer;
     transition: all .2s ease-in-out;
 
-    &:hover,
-    &:focus,
-    &.active {
+    &:hover {
       background-color: $mauve;
     }
   }
@@ -238,9 +234,7 @@
     padding: 0;
     cursor: pointer;
 
-    &:hover,
-    &:focus,
-    &.active {
+    &:hover {
       background-color: transparent;
     }
   }
@@ -321,9 +315,7 @@
   cursor: pointer;
   transition: all .2s ease-in-out;
 
-  &:hover,
-  &:focus,
-  &.active {
+  &:hover {
     background-color: $lavender-web;
   }
 }
@@ -360,20 +352,23 @@
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 1024px) {
   .links__mockup {
     display: none;
   }
+
+  .links__info {
+    width: 100%;
+  }
+}
+
+@media (max-width: 540px) {
 
   .links__wrapper {
     width: 100%;
     display: flex;
     gap: 1.5rem;
     padding: 1rem;
-  }
-
-  .links__info {
-    width: 100%;
   }
 
   .links__info__container {
