@@ -1,7 +1,7 @@
 # devlinks
-∙ MERN stack application. Create, read, update, delete links and see previews in the mobile mockup.
+MERN stack application. Create, read, update, delete links and see previews in the mobile mockup.
 Profile details: profile picture, first name, last name, and email.
-User authentication and saving details to a database. ∙
+User authentication and saving details to a database.
 
 # Live View:
 - https://devlinks.litewskidev.usermd.net
@@ -15,10 +15,12 @@ User authentication and saving details to a database. ∙
 - https://devlinks.litewskidev.usermd.net/65398b3991b4ad6c913a9f3c
 
 # Build with:
-∙ HTML5 ∙ JavaScript ∙ React ∙ React Router ∙ Redux ∙ Node ∙ Express ∙ MongoDB ∙ GSAP ∙ SASS ∙ RWD ∙
+HTML5 ∙ JavaScript ∙ React ∙ React Router ∙ Redux ∙ Node ∙ Express ∙ MongoDB ∙ GSAP ∙ SASS ∙ RWD
 
 # Layouts:
-∙ Mobile ∙ Tablet ∙ Desktop ∙
+Mobile ∙ Tablet ∙ Desktop
 
 # Preview:
-![devlinks](devlinks.png)
+![devlinks1](devlinks1.png)
+![devlinks2](devlinks2.png)
+![devlinks3](devlinks3.png)
